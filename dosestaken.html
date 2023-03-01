@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Nightingale's Rose</title>
+	<!-- Stylesheets -->
+	<link href='http://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" type="text/css" href="reset.css"> -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Libraries -->
+	<script type="text/javascript" src="d3.min.js"></script>
+	<!-- Scripts -->
+	<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		var rose = Chart.rose(),
+			height = 600,
+			format = d3.time.format('%m/%Y'),
+			// causes = ['disease', 'wounds', 'other'],
+			causes = [ 'First-dose','Second-dose'],
+			labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+		// Add a title:
+		d3.select('body').append('h2')
+			.attr('class', 'title')
+			.html('DOSES TAKEN <span class="large"> INDIA </span> <p>(JAN 2021 - AUG 2021) </p><p>Florence Nightingale’s Rose Chart </p> ')
+
+		// Add sub-titles:
+		d3.select('body').append('h3')
+			.attr('class', 'subtitle left')
+			.html('<p> References : http://mbostock.github.io/protovis/ex/crimea-rose.html</p> <p>http://understandinguncertainty.org/node/213</p> <p>https://gist.github.com/kgryte/5926740#file-readme-md</p>');
+
+		// Load the JSON data:
+		d3.json('data.json', function (data) {
+			
+			var scalar;
+
+			data = [
+				{
+					"date": "1/2021",
+					"month": "January",
+					"total_sample": 6159939333,
+					"positive": 31278483,
+					"negative": 964815446,
+					"total_individuals_vaccinated":37529972,
+					"male_vaccinated":6436622,
+					"female_vaccinated":12325850,
+					"transgender_vaccinated":2589,
+					"first_dose":37529972,
+					"second_dose":0
+				},
+				{
+					"date": "2/2021",
+					"month": "February",
+					"total_sample": 6231380973,
+					"positive": 6284179,
+					"negative": 987473695,
+					"total_individuals_vaccinated":432197937,
+					"male_vaccinated":103753508,
+					"female_vaccinated":112319178,
+					"transgender_vaccinated":28879,
+					"first_dose":432197937,
+					"second_dose":33912180
+				},
+				{
+					"date": "3/2021",
+					"month": "March",
+					"total_sample": 7672542478,
+					"positive": 4993855,
+					"negative": 1121139724,
+					"total_individuals_vaccinated":1883178267,
+					"male_vaccinated":507062118,
+					"female_vaccinated":435330520,
+					"transgender_vaccinated":102178,
+					"first_dose":1811727805,
+					"second_dose":370419202
+				},
+				{
+					"date": "4/2020",
+					"month": "January",
+					"total_sample": 8614830154,
+					"positive": 6006460,
+					"negative": 1216678316,
+					"total_individuals_vaccinated":5835484339,
+					"male_vaccinated":1523758954,
+					"female_vaccinated":1395545597,
+					"transgender_vaccinated":358176,
+					"first_dose":5835484339,
+					"second_dose":932114284
+				},
+				{
+					"date": "5/2020",
+					"month": "January",
+					"total_sample": 10800183389,
+					"positive": 10950711,
+					"negative": 1409955631,
+					"total_individuals_vaccinated":8901502204,
+					"male_vaccinated":2349501779,
+					"female_vaccinated":2100613965,
+					"transgender_vaccinated":635358,
+					"first_dose":8901502204,
+					"second_dose":2352920484
+				},
+				{
+					"date": "6/2020",
+					"month": "January",
+					"total_sample": 12405231572,
+					"positive": 11622472,
+					"negative": 1468780652,
+					"total_individuals_vaccinated":9828781459,
+					"male_vaccinated":2648185877,
+					"female_vaccinated":2265493626,
+					"transgender_vaccinated":852107,
+					"first_dose":13011773489,
+					"second_dose":2941150585
+				},
+				{
+					"date": "7/2020",
+					"month": "January",
+					"total_sample": 14712047971,
+					"positive": 17495824,
+					"negative": 1572641822,
+					"total_individuals_vaccinated":0,
+					"male_vaccinated":0,
+					"female_vaccinated":0,
+					"transgender_vaccinated":0,
+					"first_dose":19584552794,
+					"second_dose":4942499088
+				}
+				, {
+					"date": "8/2020",
+					"month": "January",
+					"total_sample": 5151930365,
+					"positive": 795607,
+					"negative": 592927736,
+					"total_individuals_vaccinated":0,
+					"male_vaccinated":0,
+					"female_vaccinated":0,
+					"transgender_vaccinated":0,
+					"first_dose":6890490464,
+					"second_dose":1944772889
+				},
+				{
+					"date": "9/2020",
+					"month": "January",
+					"total_sample": 0,
+					"positive": 0,
+					"negative": 0,
+					"total_individuals_vaccinated":0,
+					"male_vaccinated":0,
+					"female_vaccinated":0,
+					"transgender_vaccinated":0,
+					"first_dose":0,
+					"second_dose":0
+				},
+				{
+					"date": "10/2020",
+					"month": "January",
+					"total_sample": 0,
+					"positive": 0,
+					"negative": 0,
+					"total_individuals_vaccinated":0,
+					"male_vaccinated":0,
+					"female_vaccinated":0,
+					"transgender_vaccinated":0,
+					"first_dose":0,
+					"second_dose":0
+				},
+				{
+					"date": "11/2020",
+					"month": "January",
+					"total_sample": 0,
+					"positive": 0,
+					"negative": 0,
+					"total_individuals_vaccinated":0,
+					"male_vaccinated":0,
+					"female_vaccinated":0,
+					"transgender_vaccinated":0,
+					"first_dose":0,
+					"second_dose":0
+					
+				},
+				{
+					"date": "12/2020",
+					"month": "January",
+					"total_sample": 0,
+					"positive": 0,
+					"negative": 0,
+					"total_individuals_vaccinated":0,
+					"male_vaccinated":0,
+					"female_vaccinated":0,
+					"transgender_vaccinated":0,
+					"first_dose":0,
+					"second_dose":0
+				}
+			]
+			
+			
+			data.forEach(function (d) {
+				d.date = format.parse(d.date);
+				d.label = labels[d.date.getMonth()];
+                
+				d.first_dose = d.first_dose;
+				d.second_dose = d.second_dose ;
+
+			});
+
+		
+			var maxVal = d3.max(data, function (d) {
+				return d3.max([ d.first_dose,d.second_dose]);
+			});
+
+			var maxRadius = Math.sqrt(maxVal * 12 / Math.PI);
+			var dataset2 = data.slice(0, 12),
+				dataset1 = data.slice(0, 12);
+
+			figure = d3.select('body')
+				.append('figure');
+
+			width = parseInt(figure.style('width'), 10);
+			rose.legend(causes)
+				.width(width)
+				.height(height)
+				.delay(0)
+				.duration(500)
+				.domain([0, maxRadius])
+				.angle(function (d) { return d.date.getMonth(); })
+				.area(function (d, i) { return [ d.first_dose,d.second_dose]; });
+
+			figure.datum(dataset1)
+				.attr('class', 'chart figure1')
+				.call(rose);
+
+			figure = d3.select('body')
+				.append('figure');
+
+			width = parseInt(figure.style('width'), 10);
+
+			rose.width(width)
+				.delay(3000);
+
+			d3.select('.figure1').append('figcaption')
+				.attr('class', 'caption1')
+				// .html('The Areas of the blue, red, &amp; black wedges are each measured from the centre as the common vertex <p> The blue wedges measured from the centre of the circle represent area for area the deaths from Preventible or Mitigable Zymotic Diseases, the red wedges measured from the center the deaths from wounds, &amp; the black wedges measured from the center the deaths from all other causes </p><p> In October 1844, &amp; April 1855, the black area coincides with the red, in January &amp; February 1856, the blue coincides with the black </p><p> The entire areas may be compared by following the blue, the red &amp; the black lines enclosing them.</p>');
+                .html(' The doses (first and second) administered throughout 2021 are shown in this Rose chart (JAN-AUG). <p>It appears that doses were gradually increased over the course of the year.<p> The highest number of doses consumed and highest number of second doses taken both occurred in JUL-2021.</p>')
+		
+			Chart.legend(causes);
+
+		});
+
+	</script>
+</body>
+
+</html>
