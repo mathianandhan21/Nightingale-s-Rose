@@ -1,9 +1,11 @@
 Nightingale's Rose
 ==================
 
-<a href="http://www.d3js.org" target="_blank">D3.js</a> visualization of the famous polar area diagram from Florence Nightingale's
-<a href="https://www.kaggle.com/datasets/sudalairajkumar/covid19-in-india" target="_blank">"Used the dataset in Kaggle related to the COVID details of INDIA </a>
-Including the tested samples across different states , the number of doses taken for the time period of Jan 2020 till Aug 2021 and the no. of cured and confirmed cases across the time period of APR 2020 till MAR 2021"</a>. 
+<a href="http://www.d3js.org" target="_blank">D3.js</a> visualization of the famous polar area diagram from Florence Nightingale's  
+
+<b>Dataset Used :</b> <a href="https://www.kaggle.com/datasets/sudalairajkumar/covid19-in-india" target="_blank"> COVID details of INDIA (Kaggle)</a>
+
+It includes the tested samples across different states , the number of doses taken for the time period of Jan 2020 till Aug 2021 and the no. of cured and confirmed cases across the time period of APR 2020 till MAR 2021"</a>. 
 
 Have referred the following work for this implementation:
 <a href="https://gist.github.com/kgryte/5926740" target="_blank">implementation</a>
