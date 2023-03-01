@@ -9,6 +9,25 @@ Have referred the following work for this implementation:
 
 There were two html files in this project. Each using the same visualization type for different dataset.
 
-First html (testedsamples.html) -  The purpose of choosing this masterpiece for this dataset is that it helps the viewer to easily compare the increase / decrease in tested samples across the year with separate segments for the samples that were tested positive and negative.
+<b>First html (testedsamples.html) -  Dataset used here is the samples tested in INDIA across 2020 and 2021.</b>
 
-Second html(dosestaken.html) - This visualization helps the viewer to compare the doses taken by public across the year 2021 (JAN-AUG).It helps to analyse which month has the most vaccination done and which month most people took complete vaccination (i.e) second dose.
+This Rose chart depicts the number of samples tested across a period of one year (i.e) April 2020 - March 2021
+
+The graphic shows that the total samples tested in 2020 were much fewer than those tested in the months of 2021.
+
+In other words, as 2020 comes to a close and into the next year, awareness of the Covid test and its preventive actions increases
+
+The samples that tested positive are another crucial observation. October (2020) and August (2020) had the most positive samples ever observed
+
+An important association that has been seen is that as the number of samples tested rises, which indicates that more people are aware of Covid, it also causes a drop in Covid positively tested results in 2021 as compared to 2020
+
+
+<b>Second html(dosestaken.html) - Dataset used here is the no. of doses taken by public across in year 2021(JAN-AUG)</b>
+
+This visualization helps the viewer to compare the doses taken by public across the year 2021 (JAN-AUG).
+
+It appears that doses taken were gradually increased over the course of the year.
+
+It helps to analyse which month has the most vaccination done and which month most people took complete vaccination (i.e) second dose.
+
+The highest number of doses consumed and highest number of second doses taken both occurred in JUL-2021
